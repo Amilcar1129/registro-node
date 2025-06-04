@@ -1,16 +1,13 @@
-// index.js
+const express = require('express');
+const app = express();
 
-const http = require('http');
+// Render provee el puerto en process.env.PORT
+const port = process.env.PORT || 3000;
 
-const hostname = 'localhost';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hola mundo desde Node.js');
+app.get('/', (req, res) => {
+  res.send('¡Hola mundo desde Render!');
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Servidor corriendo en http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Servidor escuchando en el puerto ${port}`);
 });
